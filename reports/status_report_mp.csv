@@ -1,0 +1,4 @@
+2xx Success     hits=51551859,visitors=36244832,txAmount=13388795.21,txAverageAmount=0.26
+3xx Redirection hits=16340054,visitors=12198581,txAmount=10024.64,txAverageAmount=0
+4xx Client errors       hits=4549310,visitors=1931767,txAmount=10912.78,txAverageAmount=0
+5xx Server errors       hits=488000,visitors=123359,txAmount=8767.51,txAverageAmount=0.02 
