@@ -1,0 +1,5 @@
+data,hits,visitors
+4xx Client Errors,4549332,311171
+5xx Server Errors,1292854,551982
+2xx Success,51551485,19876476
+3xx Redirection,16340054,7585364
