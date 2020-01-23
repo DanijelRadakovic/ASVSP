@@ -1,11 +1,11 @@
-package stream
+package watch
 
 import model.ApacheAccessLog
 import org.apache.spark.streaming.dstream.DStream
 
 trait Watcher {
-  val name: String
+  val path: String
 
-  def watch(logs: DStream[ApacheAccessLog])
+  def watch(logs: DStream[ApacheAccessLog], persist: Boolean)
 
 }
