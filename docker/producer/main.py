@@ -4,7 +4,6 @@ import os
 import sys
 import time
 import random
-import re
 import datetime
 from kafka import KafkaProducer
 import kafka.errors
@@ -16,9 +15,8 @@ ERROR_PERIOD = 2
 
 
 def update_log(line):
-    tokens = list(map(''.join, re.findall(r'\"(.*?)\"|\[(.*?)\]|(\S+)', line)))
-    tokens[3] = datetime.datetime.now().strftime('[%d/%b/%Y:%H:%M:%S %z]')
-    return ' '.join(tokens)
+    return line.replace(line[line.find('['): line.find(']')+1],
+                        datetime.datetime.now().strftime('[%d/%b/%Y:%H:%M:%S]')).strip()
 
 
 if __name__ == '__main__':
@@ -58,14 +56,13 @@ if __name__ == '__main__':
             print('===== Reading from file ', file.name, ' =====')
             for log in file:
                 producer.send(TOPIC, key=bytes('apache-access-log', 'utf-8'), value=bytes(update_log(log), 'utf-8'))
-                time.sleep(1)
             error_log_files.remove(file)
             file.close()
             error_period_cnt = 0
         else:
             error_period_cnt += 1
             file = random.choice(log_files)
-            lines = random.randint(1, 8)
+            lines = random.randint(5, 8)
             print('===== Reading ', lines, ' from file ', file.name, ' =====')
             for i in range(lines):
                 log = file.readline()
