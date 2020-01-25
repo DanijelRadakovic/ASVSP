@@ -4,8 +4,8 @@ Download data [here](https://drive.google.com/open?id=1LLD3UH2mRa3Oz7omJo8J8I1ep
 
 
 ## Environment setup
-`$ cd docker`
-`$ docker-compose up --build`
+- `$ cd docker`
+- `$ docker-compose up --build`
 
 ## Data initialization
 `$ ./scripts/init_data.sh`
